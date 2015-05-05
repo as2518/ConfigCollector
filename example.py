@@ -13,6 +13,6 @@ router.login()
 router_config = router.get_config()
 hostname = router.get_hostname()
 
-router.upload_config( router_config )
+router.gitpush_config( router_config )
 router.logout()
 

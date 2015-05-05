@@ -16,7 +16,7 @@ class Router:
         self.session = SSH2()
         self.session.connect(self.ipv4)
         self.session.login( Account(self.username, self.password) )
-        return self.session
+
 
     def logout(self):
         self.session.send('exit\r')
@@ -58,5 +58,5 @@ class Router:
         return hostname
 
 
-    def upload_config(self, config_file):
+    def gitpush_config(self, config_file):
         pass
