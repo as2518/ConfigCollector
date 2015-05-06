@@ -1,6 +1,7 @@
 .idea/
 router_config/*.txt
 my_router_*.json
+*.swp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
