@@ -1,28 +1,65 @@
 #! /usr/bin/env python
 import sys
+import traceback
+import json
 
 from execute_router import Router
-from json import loads
 
-file_input = open(sys.argv[1] ,'r')
-router_info_json = file_input.read()
-file_input.close()
+try:
+    # argument is routers' information with JSON formt.
+    file_input = open(sys.argv[1] ,'r')
+except ( IOError, IndexError):
+    print 'Cannot open JSON file.'
+    print 'Please use bellow: " python get_router_config [JSON file] " '
+    sys.exit()
+else:
+    router_info_json = file_input.read()
+    file_input.close()
 
-print 'Read ' + sys.argv[1] + '!'
-
-router_info = loads(router_info_json)
+try:
+    router_info = json.loads(router_info_json)
+except ValueError as error:
+    print 'JSON format error : '
+    print router_info_json
+    print error
+    sys.exit()
 
 for num in range( len(router_info) ):
     router = Router( router_info[num] )
 
-    router.login()
-    router_config = router.get_config()
-    router.logout()
+    try:
+        router.login()
+        router_config = router.get_config()
+    except:
+        print 'Router login error'
+        traceback.print_exc()
+        router.logout()
+        sys.exit()
 
-    filename = 'error'
-    filename = 'router_config/' + router_info[num]['hostname'] + '.txt'
-    file_output = open ( filename, 'w')
-    file_output.write( router_config )
-    file_output.close
+    try:
+        router_config = router.get_config()
+    except:
+        print 'Router get configuration error'
+        traceback.print_exec()
+        router.logout()
+        sys.exit()
+    else:
+        router.logout()
 
-    print 'Created ' + filename +' !'
+    try:
+        filename = 'router_config/' + router_info[num]['hostname'] + '.txt'
+    except AtributeError:
+        print 'cannot read dictionary of router_info[' + num + '][hostname]'
+        sys.exit()
+
+    try:
+        file_output = open ( filename, 'w')
+        file_output.write( router_config )
+    except:
+        print 'cannot open ' + filename
+        file_output.close
+        sys.exit()
+    else:
+        file_output.close
+
+    print 'Success to created ' + filename +' !'

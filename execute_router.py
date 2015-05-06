@@ -18,11 +18,14 @@ class Router:
         self.session.login( Account(name=self.username, password=self.password) )
 
     def logout(self):
-        self.session.send('exit\r')
-        self.session.close()
+        if self.session :
+            self.session.send('exit\r')
+            self.session.close()
+        else:
+            raise AttributeError( 'cannot find a living session.' )
 
     def get_config(self):
-        result = 'N/A'
+        result = ''
 
         if( self.os=='IOS-XR' or self.os=='IOS' or self.os=='IOS-XE'):
             self.session.execute('terminal length 0')
@@ -32,6 +35,6 @@ class Router:
             self.session.execute('show configuration | no-more')
             result = self.session.response
         else:
-            pass
+            raise ValueError( 'OS is unknown value. Please describe from  JUNOS / IOS / IOS-XE / IOS-XR.' )
 
         return result
