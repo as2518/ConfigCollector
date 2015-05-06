@@ -1,0 +1,23 @@
+[
+    {
+        "hostname" : "router1",
+	"username" : "user1",
+	"password" : "aaabbbccc",
+	"ipv4"     : "192.168.0.1",
+	"os"       : "JUNOS"
+    },
+    {
+        "hostname" : "router2",
+	"username" : "user2",
+	"password" : "aaabbbccc",
+	"ipv4"     : "192.168.0.2",
+	"os"       : "IOS-XR"
+    },
+    {
+        "hostname" : "router3",
+	"username" : "user3",
+	"password" : "aaabbbccc",
+	"ipv4"     : "192.168.0.3",
+	"os"       : "IOS"
+    },
+]

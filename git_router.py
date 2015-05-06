@@ -1,22 +1,22 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from git import Repo
 from Exscript.protocols import SSH2
 from Exscript.Account import Account
+from git import Repo
 
 class Router:
-    def __init__(self, ipv4, username, password, os):
-        self.ipv4 = ipv4
-        self.username = username
-        self.password = password
-        self.os = os
+    def __init__(self, router_info):
+        self.hostname   = router_info['hostname']
+        self.username   = router_info['username']
+        self.password   = router_info['password']
+        self.ipv4       = router_info['ipv4']
+        self.os         = router_info['os']
 
     def login(self):
         self.session = SSH2()
         self.session.connect(self.ipv4)
-        self.session.login( Account(self.username, self.password) )
-
+        self.session.login( Account(name=self.username, password=self.password) )
 
     def logout(self):
         self.session.send('exit\r')
@@ -25,38 +25,17 @@ class Router:
     def get_config(self):
         result = 'N/A'
 
-        if( self.os == 'IOS-XR' ):
+        if( self.os=='IOS-XR' or self.os=='IOS' or self.os=='IOS-XE'):
             self.session.execute('terminal length 0')
-            self.session.excute('show running-config')
-            result = self.session.response.splitlines()
+            self.session.execute('show running-config')
+            result = self.session.response
         elif( self.os == 'JUNOS'):
-            self.session.excute('show configuration | no-more')
-            result = self.session.response.splitlines()
+            self.session.execute('show configuration | no-more')
+            result = self.session.response
         else:
             pass
 
         return result
-
-    def get_hostname(self):
-        hostname = 'N/A'
-        result = 'N/A'
-        if( self.os == 'IOS-XR' ):
-            self.session.excute('show running-config | incude hostname')
-            result = self.session.response.splitlines()
-
-            #implement later
-            hostname = result
-        elif( self.os == 'JUNOS'):
-            self.session.excute('show configuration | match host-name')
-            result = self.session.response.splitlines()
-
-            #implement later
-            hostname = result
-        else:
-            pass
-
-        return hostname
-
 
     def gitpush_config(self, config_file):
         pass

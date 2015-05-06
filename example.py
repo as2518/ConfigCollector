@@ -1,18 +1,31 @@
+#! /usr/bin/env python
+import sys
+
 from git_router import Router
+from json import loads
 
-ipv4 = '192.168.10.1'
-username = 'test'
-password = 'test'
-os = 'JUNOS'
+file_input = open(sys.argv[1] ,'r')
+router_info_json = file_input.read()
+file_input.close()
 
+print 'Read ' + sys.argv[1] + '!'
 
-router = Router(ipv4, username, password, os)
+router_info = loads(router_info_json) 
 
-router.login()
+for num in range( len(router_info) ):
+    router = Router( router_info[num] )
 
-router_config = router.get_config()
-hostname = router.get_hostname()
+    router.login()
+    router_config = router.get_config()
+    router.logout()
 
-router.gitpush_config( router_config )
-router.logout()
+    filename = 'error'
+    filename = 'router_config/' + router_info[num]['hostname'] + '.txt'
+    file_output = open ( filename, 'w')
+    file_output.write( router_config ) 
+    file_output.close
+
+    print 'Created ' + filename +' !'
+
+    #router.gitpush_config( router_config )
 
