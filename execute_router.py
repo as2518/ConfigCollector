@@ -3,15 +3,14 @@
 
 from Exscript.protocols import SSH2
 from Exscript.Account import Account
-from git import Repo
 
 class Router:
     def __init__(self, router_info):
         self.hostname   = router_info['hostname']
         self.username   = router_info['username']
         self.password   = router_info['password']
-        self.ipv4       = router_info['ipv4']
-        self.os         = router_info['os']
+        self.ipv4           = router_info['ipv4']
+        self.os              = router_info['os']
 
     def login(self):
         self.session = SSH2()
@@ -36,6 +35,3 @@ class Router:
             pass
 
         return result
-
-    def gitpush_config(self, config_file):
-        pass

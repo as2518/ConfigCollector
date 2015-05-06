@@ -10,10 +10,15 @@ Router configuration management tool.
 ## How to use
 
 ```
-python example.txt my_router.json
+python get_router_config.py my_router.json
 ```
 
 You can describe multipul routers using json format.
+The item of "os"  is select from the below list.
+- JUNOS
+- IOS
+- IOS-XE
+- IOS-XR
 
 ```my_router.json
 [
@@ -41,7 +46,7 @@ You can describe multipul routers using json format.
 ]
 ```
 
-The router configuration is saved in "router_config" directory.
+After run ' get_router_config.py', the router configuration is saved in "router_config" directory.
 
 ```
 $ ls router_config
