@@ -32,7 +32,7 @@ for num in range( len(router_info) ):
         router_config = router.get_config()
     except:
         print 'Router login error'
-        traceback.print_exc()
+        print router_info[num]
         router.logout()
         sys.exit()
 
@@ -40,7 +40,7 @@ for num in range( len(router_info) ):
         router_config = router.get_config()
     except:
         print 'Router get configuration error'
-        traceback.print_exec()
+        print router_info[num]
         router.logout()
         sys.exit()
     else:
@@ -62,4 +62,4 @@ for num in range( len(router_info) ):
     else:
         file_output.close
 
-    print 'Success to created ' + filename +' !'
+    print 'Success to create "'  + filename +'" !'
