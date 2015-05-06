@@ -10,12 +10,12 @@ Router configuration management tool using git.
 ## How to use
 
 ```
-python example.txt sample.json
+python example.txt my_router.json
 ```
 
 You can describe multipul routers using json format.
 
-```sample.json
+```my_router.json
 [
     {
         "hostname" : "router1",
