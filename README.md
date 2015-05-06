@@ -1,5 +1,5 @@
-# GitRouter
-Router configuration management tool using git.
+# GetRouterConfig
+Router configuration management tool.
 
 # Support router OSs
 - JUNOS
@@ -44,8 +44,8 @@ You can describe multipul routers using json format.
 The router configuration is saved in "router_config" directory.
 
 ```
-$ ls router_config 
-router1.txt  router2.txt router3.txt
+$ ls router_config
+router1.txt  router2.txt  router3.txt
 ```
 
 ```
@@ -59,5 +59,3 @@ system {
     time-zone Asia/Tokyo;
 (snip)
 ```
-
-
