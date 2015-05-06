@@ -58,7 +58,7 @@ router1.txt  router2.txt  router3.txt
 ```
 
 ```
-$ less router1.txt
+$ less  router_config/router1.txt
 
 show configuration | no-more
 ## Last commit: 2015-05-01 17:00:00 JST by user1
@@ -68,3 +68,7 @@ system {
     time-zone Asia/Tokyo;
 (snip)
 ```
+
+# blog
+Posted technical blog in Qiita (In Japanese).
+http://qiita.com/taijijiji/items/620908c1bec27e1ea933
