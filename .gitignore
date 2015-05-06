@@ -1,6 +1,6 @@
 .idea/
-
-router_config/*
+router_config/*.txt
+my_route_*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
