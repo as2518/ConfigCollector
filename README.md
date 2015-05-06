@@ -1,24 +1,26 @@
 # GetRouterConfig
 Router configuration management tool.
 
-# Support router OSs
+# Support router's OSs
 - JUNOS
 - IOS-XR
 - IOS
 - IOS-XE
 
-## How to use
+## How to use this tool
 
 ```
-python get_router_config.py my_router.json
+python get_router_config.py [json file]
 ```
 
 You can describe multipul routers using json format.
-The item of "os"  is select from the below list.
+The router's OS is select from the below list.
 - JUNOS
 - IOS
 - IOS-XE
 - IOS-XR
+
+This is sample json file.
 
 ```my_router.json
 [
@@ -46,7 +48,9 @@ The item of "os"  is select from the below list.
 ]
 ```
 
-After run ' get_router_config.py', the router configuration is saved in "router_config" directory.
+After running this tool, the gotten router configuration is saved under "router_config" directory.
+
+Example:
 
 ```
 $ ls router_config
