@@ -25,8 +25,6 @@ class Router:
             raise AttributeError( 'cannot find a living session.' )
 
     def get_config(self):
-        result = ''
-
         if( self.os=='IOS-XR' or self.os=='IOS' or self.os=='IOS-XE'):
             self.session.execute('terminal length 0')
             self.session.execute('show running-config')
