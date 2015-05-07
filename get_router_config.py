@@ -7,14 +7,16 @@ from execute_router import Router
 
 try:
     # argument is routers' information with JSON formt.
-    file_input = open(sys.argv[1] ,'r')
+    input_filename = sys.argv[1]
+    input_file = open(input_filename ,'r')
+    print 'Reading router info from "' + input_filename + '"...' 
 except ( IOError, IndexError):
     print 'Cannot open JSON file.'
     print 'Please use bellow: " python get_router_config [JSON file] " '
     sys.exit()
 else:
-    router_info_json = file_input.read()
-    file_input.close()
+    router_info_json = input_file.read()
+    input_file.close()
 
 try:
     router_info = json.loads(router_info_json)
@@ -26,7 +28,7 @@ except ValueError as error:
 
 for num in range( len(router_info) ):
     router = Router( router_info[num] )
-
+    print 'Accessing router: ' + router_info[num]['hostname'] + '...'
     try:
         router.login()
         router_config = router.get_config()
@@ -47,19 +49,20 @@ for num in range( len(router_info) ):
         router.logout()
 
     try:
-        filename = 'router_config/' + router_info[num]['hostname'] + '.txt'
+        output_filename = 'router_config/' + router_info[num]['hostname'] + '.txt'
+        print 'Writing output file "' + output_filename + '"...'
     except AtributeError:
         print 'cannot read dictionary of router_info[' + num + '][hostname]'
         sys.exit()
 
     try:
-        file_output = open ( filename, 'w')
-        file_output.write( router_config )
+        output_file = open ( output_filename, 'w')
     except:
-        print 'cannot open ' + filename
-        file_output.close
+        print 'cannot open "' + output_filename + '"'
+        output_file.close
         sys.exit()
     else:
-        file_output.close
+        output_file.write( router_config )
+        output_file.close
 
-    print 'Success to create "'  + filename +'" !'
+    print 'Success to create "'  + output_filename + '" !'
