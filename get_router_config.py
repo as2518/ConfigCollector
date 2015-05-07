@@ -3,7 +3,7 @@ import sys
 import traceback
 import json
 
-from execute_router import Router
+from ssh_router import Router
 
 try:
     # argument is routers' information with JSON formt.
