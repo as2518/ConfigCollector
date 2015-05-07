@@ -5,6 +5,7 @@ import json
 
 from ssh_router import Router
 
+# Open json input file
 try:
     # argument is routers' information with JSON formt.
     input_filename = sys.argv[1]
@@ -18,6 +19,7 @@ else:
     router_info_json = input_file.read()
     input_file.close()
 
+# Convert format from json to dictionary_type
 try:
     router_info = json.loads(router_info_json)
 except ValueError as error:
@@ -26,8 +28,11 @@ except ValueError as error:
     print error
     sys.exit()
 
+# Login and get config each routers using ssh
 for num in range( len(router_info) ):
     router = Router( router_info[num] )
+    
+    # Login Router
     print 'Accessing router: ' + router_info[num]['hostname'] + '...'
     try:
         router.login()
@@ -38,6 +43,7 @@ for num in range( len(router_info) ):
         router.logout()
         sys.exit()
 
+    # Get config of Router
     try:
         router_config = router.get_config()
     except:
@@ -47,7 +53,8 @@ for num in range( len(router_info) ):
         sys.exit()
     else:
         router.logout()
-
+    
+    # Create output file written config
     try:
         output_filename = 'router_config/' + router_info[num]['hostname'] + '.txt'
         print 'Writing output file "' + output_filename + '"...'
