@@ -7,7 +7,20 @@ Router configuration management tool.
 - IOS
 - IOS-XE
 
-## How to use this tool
+# Install
+Download this tool.
+
+```
+$ git clone git@github.com:taijiji/GetRouterConfig.git
+```
+
+Install python module using pip.
+
+```
+$ pip install -r requirements.txt
+```
+
+# How to use this tool
 
 ```
 python get_router_config.py [json file]
