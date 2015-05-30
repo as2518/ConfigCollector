@@ -1,23 +1,16 @@
 [
     {
-        "hostname" : "router1",
-	"username" : "user1",
-	"password" : "aaabbbccc",
+        "hostname" : "sample_router1",
+	"username" : "sample_user1",
+	"password" : "sample_passwd1",
 	"ipv4"     : "192.168.0.1",
 	"os"       : "JUNOS"
     },
     {
-        "hostname" : "router2",
-	"username" : "user2",
-	"password" : "aaabbbccc",
+        "hostname" : "sample_router2",
+	"username" : "sample_user2",
+	"password" : "sample_passwd2",
 	"ipv4"     : "192.168.0.2",
 	"os"       : "IOS-XR"
     },
-    {
-        "hostname" : "router3",
-	"username" : "user3",
-	"password" : "aaabbbccc",
-	"ipv4"     : "192.168.0.3",
-	"os"       : "IOS"
-    }
 ]
