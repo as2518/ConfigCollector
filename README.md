@@ -1,7 +1,8 @@
-# GetRouterConfig
-Router configuration management tool.
+# ConfigCollector
+This tool collects the configuration file of multiple routers.
+We created ConfigCollector, in order to manage router's configuration files using Git system.
 
-# Support router's OSs
+# Support router's OS
 - JUNOS
 - IOS-XR
 - IOS
@@ -11,7 +12,7 @@ Router configuration management tool.
 Download this tool.
 
 ```
-$ git clone git@github.com:taijiji/GetRouterConfig.git
+$ git clone git@github.com:taijiji/ConfigCollector.git
 ```
 
 Install python module using pip.
