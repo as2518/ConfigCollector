@@ -1,9 +1,9 @@
 from setuptools import setup
 setup(
-    name='GetRouterConfig'
-    version='0.9.0'
+    name='ConfigCollector'
+    version='0.1.0'
     packages=[
-        'get_router_config',
+        'configcollector',
         'ssh_router',
     ],
     include_package_data=True,
@@ -12,7 +12,6 @@ setup(
     ],
     entry_points=```
         [console_scripts]
-        get_config = get_router_config
+        configcollector = configcollector
     ```
 )
-

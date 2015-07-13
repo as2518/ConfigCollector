@@ -1,12 +1,11 @@
 # ConfigCollector
 This tool collects the configuration file of multiple routers.
-We created ConfigCollector, in order to manage router's configuration files using Git system.
 
 # Support router's OS
-- JUNOS
-- IOS-XR
 - IOS
 - IOS-XE
+- IOS-XR
+- JUNOS
 
 # Install
 Download this tool.
@@ -58,7 +57,7 @@ This is sample json file.
         "password" : "aaabbbccc",
         "ipv4"     : "192.168.0.3",
         "os"       : "IOS"
-    },
+    }
 ]
 ```
 
