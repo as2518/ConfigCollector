@@ -16,7 +16,7 @@ def main():
                         (default=etc/configcollector/inventory.json)')
     parser.add_argument('-o',  '--output',
                         type=str,
-                        default='./',
+                        default='./output/',
                         help='output directory\n\
                         (default=CURRENT_DIRECTORY/output/)')
     args = parser.parse_args()
