@@ -1,5 +1,5 @@
 # ConfigCollector
-This tool collects the configuration file of multiple routers.
+This tool collects configuration file of multiple routers.
 
 # Support router's OS
 - IOS
