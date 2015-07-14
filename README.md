@@ -61,17 +61,17 @@ This is sample json file.
 ]
 ```
 
-After running this tool as default setting, the gotten router configuration is saved under "router_config" directory.
+After running this tool as default setting, the gotten router configuration is saved under "output" directory.
 
 Example:
 
 ```
-$ ls router_config
+$ ls output
 router1.txt  router2.txt  router3.txt
 ```
 
 ```
-$ less  router_config/router1.txt
+$ less  output/router1.txt
 
 show configuration | no-more
 ## Last commit: 2015-05-01 17:00:00 JST by user1

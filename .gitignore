@@ -1,9 +1,6 @@
 .idea/
 *.swp
 
-# eliminate security incident on mistake to git push
-router_config/*.txt
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,48 +1,78 @@
 #! /usr/bin/env python
 import sys
 from argparse import ArgumentParser
-from file_handler import readfile, writefile, convert_jason_to_dict
-from ssh_router import Router
-
-parser = ArgumentParser(description='Collect configuration files on mutiple routers')
-parser.add_argument(    '-i', '--inventory',
-                            type=str,
-                            default='/etc/configcollector/inventory',
-                            help='router information file\n(default=/etc/configcollector/inventory)')
-parser.add_argument(   '-o',  '--output',
-                            type=str,
-                            default='./',
-                            help='output directory\n(default=CURRENT_DIRECTORY/router_config/)' )
-args = parser.parse_args()
+import json
+from router import Router
 
 
-router_info = convert_jason_to_dict( readfile( args.inventory ) )
+def main():
+    # Parse argment
+    parser = ArgumentParser(
+        description='Collect configuration files on mutiple routers')
+    parser.add_argument('-i', '--inventory',
+                        type=str,
+                        default='/etc/configcollector/inventory.json',
+                        help='router information file\n\
+                        (default=etc/configcollector/inventory.json)')
+    parser.add_argument('-o',  '--output',
+                        type=str,
+                        default='./',
+                        help='output directory\n\
+                        (default=CURRENT_DIRECTORY/output/)')
+    args = parser.parse_args()
 
-# Login and get config each routers using ssh
-for num in range( len(router_info) ):
-    router = Router( router_info[num] )
-
-    # Login and get config of Router
-    print 'Accessing router: ' + router_info[num]['hostname'] + '...'
+    # Read router infomation file
     try:
-        router.login()
-        router_config = router.get_config()
-    except:
-        print 'Router get configuration error'
-        print router_info[num]
-        router.logout()
-        sys.exit()
-    else:
-        router.logout()
+        with open(args.inventory, 'r') as file:
+            router_info_json = file.read()
+    except (IOError, IndexError):
+        sys.stderr.write('Cannot open file : ' + args.inventory + '\n')
+        sys.exit(1)
 
-    # Create output file written config
+    # Convert json format to dictionary
     try:
-        output_filename = args.output + 'router_config/' + router_info[num]['hostname'] + '.txt'
-        print 'Writing output file "' + output_filename + '"...'
-    except AttributeError:
-        print 'cannot read : ' + output_filename 
-        sys.exit()
+        router_info = json.loads(router_info_json)
+    except ValueError as error:
+        sys.stderr.write('JSON format error : \n')
+        sys.stderr.write(router_info_json)
+        sys.stderr.write(str(error))
+        sys.exit(1)
 
-    writefile(output_filename, router_config)
+    # Login and get config for each routers
+    for num in range(len(router_info)):
+        router = Router(router_info[num])
+        print 'Accessing router: ' + router_info[num]['hostname'] + '...'
 
-    print 'Success : "'  + output_filename + '" !'
+        try:
+            router.login()
+            output = router.get_config()
+        except:
+            sys.stderr.write('SSH connection error\n')
+            sys.stderr.write(str(router_info[num]) + '\n')
+            router.logout()
+            sys.exit(1)
+        else:
+            router.logout()
+
+        # Open output file written config
+        try:
+            output_filename =\
+                args.output + router_info[num]['hostname'] + '.txt'
+            print 'Writing output file "' + output_filename + '"...'
+        except AttributeError:
+            sys.stderr.write('Cannot read : ' + output_filename + '\n')
+            sys.exit(1)
+
+        # Write output file
+        try:
+            with open(output_filename, 'w') as file:
+                file.write(output)
+        except:
+            sys.stderr.write('Cannot open "' + output_filename + '"\n')
+            file.close()
+            sys.exit(1)
+
+        print 'Success : "' + output_filename + '" !'
+
+if __name__ == '__main__':
+    main()
