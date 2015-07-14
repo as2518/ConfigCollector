@@ -23,7 +23,7 @@ $ pip install -r requirements.txt
 # How to use this tool
 
 ```
-python get_router_config.py [json file]
+python configcollector.py -i [json file]
 ```
 
 You can describe multipul routers using json format.
@@ -35,7 +35,7 @@ The router's OS is select from the below list.
 
 This is sample json file.
 
-```my_router.json
+```sample_routers.json
 [
     {
         "hostname" : "router1",
@@ -61,7 +61,7 @@ This is sample json file.
 ]
 ```
 
-After running this tool, the gotten router configuration is saved under "router_config" directory.
+After running this tool as default setting, the gotten router configuration is saved under "router_config" directory.
 
 Example:
 
@@ -75,7 +75,7 @@ $ less  router_config/router1.txt
 
 show configuration | no-more
 ## Last commit: 2015-05-01 17:00:00 JST by user1
-version 10.x.x;
+version x.x.x;
 system {
     host-name router1;
     time-zone Asia/Tokyo;
