@@ -37,10 +37,10 @@ for num in range( len(router_info) ):
 
     # Create output file written config
     try:
-        output_filename = args.ouput + 'router_config/' + router_info[num]['hostname'] + '.txt'
+        output_filename = args.output + 'router_config/' + router_info[num]['hostname'] + '.txt'
         print 'Writing output file "' + output_filename + '"...'
-    except AtributeError:
-        print 'cannot read router_info[' + num + '][hostname]'
+    except AttributeError:
+        print 'cannot read : ' + output_filename 
         sys.exit()
 
     writefile(output_filename, router_config)
