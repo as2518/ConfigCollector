@@ -16,9 +16,9 @@ def main():
                         (default=etc/configcollector/inventory.json)')
     parser.add_argument('-o',  '--output',
                         type=str,
-                        default='./output/',
+                        default='./',
                         help='output directory\n\
-                        (default=CURRENT_DIRECTORY/output/)')
+                        (default=CURRENT_DIRECTORY)')
     args = parser.parse_args()
 
     # Read router infomation file
