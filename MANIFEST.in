@@ -1,3 +1,3 @@
 include LICENSE
 include README.md
-include sample_routers.json
+include sample/sample_routers.json
