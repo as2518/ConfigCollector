@@ -12,13 +12,13 @@ Support router OS
 
 Install
 =====
-Install using pip
+Install using pip.
 ::
     pip install configcolletctor
 
 How to use
 ==============
-Use following format
+Use following format.
 ::
     python configcollector.py -i [inventory_file] -o [output_dirctory]
 
