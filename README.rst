@@ -30,7 +30,7 @@ Use following format
         * IOS-XE
         * IOS-XR
 
-    Exmaple
+    Sample inventory file
     ::
         [
             {
