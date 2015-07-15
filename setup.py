@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='configcollector',
-    version='0.1.0',
+    version='0.1.1',
     description='The tool collects configuration file of multiple routers',
     author='Taiji Tsuchiya',
     author_email='tuty0630@gmail.com',

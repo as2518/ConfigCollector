@@ -67,7 +67,7 @@ Example to get router config files using ConfigCollector.
 ::
     % mkdir router_config
 
-    % python configcollector.py -i sample_routers.json -o router_config/
+    % configcollector -i sample_routers.json -o router_config/
 
     Accessing router: router1...
     Writing output file "router_config/router1"...
@@ -81,7 +81,7 @@ Example to get router config files using ConfigCollector.
 
     % ls router_config
     router1.txt  router2.txt  router3.txt
-    
+
     % less router1.txt
 
     show configuration | no-more
