@@ -58,7 +58,7 @@ Use following format.
 
 * output_directory
     The directory placed router configuration output files by ConfigCollector.
- 
+
     Defalt : Current directory
 
 Example
@@ -68,7 +68,7 @@ Example to get router config files using ConfigCollector.
     % mkdir router_config
 
     % python configcollector.py -i sample_routers.json -o router_config/
-    
+
     Accessing router: router1...
     Writing output file "router_config/router1"...
     Success : "router_config/router1"!
@@ -78,12 +78,12 @@ Example to get router config files using ConfigCollector.
     Accessing router: router3...
     Writing output file "router_config/router3"...
     Success : "router_config/router3"!
-    
-    % ls routera_config
+
+    % ls router_config
     router1.txt  router2.txt  router3.txt
     
     % less router1.txt
-    
+
     show configuration | no-more
     ## Last commit: 2015-05-01 17:00:00 JST by user1
     version x.x.x;
@@ -91,6 +91,3 @@ Example to get router config files using ConfigCollector.
         host-name router1;
         time-zone Asia/Tokyo;
     (snip)
-
-    
-    
