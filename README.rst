@@ -18,8 +18,9 @@ pip install configcolletctor
 How to use
 ==============
 
- ::
-    python configcollector.py -i [inventory_file] -o [output_dirctory]
+::
+
+python configcollector.py -i [inventory_file] -o [output_dirctory]
 
 * inventory_file
     Router infomation file using Json format.
@@ -29,7 +30,9 @@ How to use
         * IOS-XE
         * IOS-XR
 
-    Exmaple::
+    Exmaple
+    ::
+    
         [
             {
                 "hostname" : "router1",
@@ -55,5 +58,6 @@ How to use
         ]
 
 * output_directory
-The directory placed router configuration files by ConfigCollector.
-Defalt : Current directory
+ The directory placed router configuration output files by ConfigCollector.
+ 
+ Defalt : Current directory
