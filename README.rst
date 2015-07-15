@@ -3,7 +3,7 @@ ConfigCollector
 ===========
 This tool collects configuration file of multiple routers.
 
-Support router's OS
+Support router OS
 ==============
 * IOS
 * IOS-XE
@@ -13,16 +13,17 @@ Support router's OS
 Install
 =====
 ::
-    pip install configcolletctor
+pip install configcolletctor
 
 How to use
 ==============
-::
+
+ ::
     python configcollector.py -i [inventory_file] -o [output_dirctory]
 
 * inventory_file
     Router infomation file using Json format.
-    The router's OS is select from the below list. ::
+    The router OS is select from the below list. ::
         * JUNOS
         * IOS
         * IOS-XE
