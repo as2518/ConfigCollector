@@ -20,7 +20,7 @@ How to use
 ==============
 Use following format.
 ::
-    python configcollector.py -i [inventory_file] -o [output_dirctory]
+    configcollector -i [inventory_file] -o [output_dirctory]
 
 * inventory_file
     Router infomation file using Json format.
