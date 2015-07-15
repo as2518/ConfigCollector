@@ -12,15 +12,15 @@ Support router OS
 
 Install
 =====
+Install using pip
 ::
-pip install configcolletctor
+    pip install configcolletctor
 
 How to use
 ==============
-
+Use following format
 ::
-
-python configcollector.py -i [inventory_file] -o [output_dirctory]
+    python configcollector.py -i [inventory_file] -o [output_dirctory]
 
 * inventory_file
     Router infomation file using Json format.
@@ -32,7 +32,6 @@ python configcollector.py -i [inventory_file] -o [output_dirctory]
 
     Exmaple
     ::
-    
         [
             {
                 "hostname" : "router1",
@@ -58,6 +57,6 @@ python configcollector.py -i [inventory_file] -o [output_dirctory]
         ]
 
 * output_directory
- The directory placed router configuration output files by ConfigCollector.
+    The directory placed router configuration output files by ConfigCollector.
  
- Defalt : Current directory
+    Defalt : Current directory
