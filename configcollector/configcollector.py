@@ -72,7 +72,7 @@ def main():
             file.close()
             sys.exit(1)
 
-        print 'Success : "' + output_filename + '" !'
+        print 'Success : "' + output_filename + '"!'
 
 if __name__ == '__main__':
     main()

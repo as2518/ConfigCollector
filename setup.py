@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='ConfigCollector',
+    name='configcollector',
     version='0.1.0',
     description='The tool collects configuration file of multiple routers',
     author='Taiji Tsuchiya',
@@ -17,6 +17,6 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        configcollector = configcollector:main
+        configcollector = configcollector.configcollector:main
         """,
 )
