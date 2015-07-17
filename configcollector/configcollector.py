@@ -41,7 +41,7 @@ def main():
     # Login and get config for each routers
     for num in range(len(router_info)):
         router = Router(router_info[num])
-        print 'Accessing router: ' + router_info[num]['hostname'] + '...'
+        print('Accessing router: ' + router_info[num]['hostname'] + '...')
 
         try:
             router.login()
@@ -58,7 +58,7 @@ def main():
         try:
             output_filename =\
                 args.output + router_info[num]['hostname'] + '.txt'
-            print 'Writing output file "' + output_filename + '"...'
+            print('Writing output file "' + output_filename + '"...')
         except AttributeError:
             sys.stderr.write('Cannot read : ' + output_filename + '\n')
             sys.exit(1)
@@ -72,7 +72,7 @@ def main():
             file.close()
             sys.exit(1)
 
-        print 'Success : "' + output_filename + '"!'
+        print('Success : "' + output_filename + '"!')
 
 if __name__ == '__main__':
     main()
