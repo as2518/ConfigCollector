@@ -45,6 +45,8 @@ def main():
         router = Router(router_info[num])
         print('Accessing router: ' + router_info[num]['hostname'] + '...')
 
+        # pylint: disable=bare-except, fixme
+        # TODO: resolve No exception type(s) specified (bare-except)
         try:
             router.login()
             output = router.get_config()
@@ -69,7 +71,7 @@ def main():
         try:
             with open(output_filename, 'w') as file:
                 file.write(output)
-        except:
+        except IOError:
             sys.stderr.write('Cannot open "' + output_filename + '"\n')
             file.close()
             sys.exit(1)
