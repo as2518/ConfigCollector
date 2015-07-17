@@ -32,7 +32,7 @@ class Router:
             self.session.execute('terminal length 0')
             self.session.execute('show running-config')
             result = self.session.response
-        elif(self.os_name == 'JUNOS'):
+        elif self.os_name == 'JUNOS':
             self.session.execute('show configuration | no-more')
             result = self.session.response
         else:
