@@ -10,7 +10,7 @@ class Router:
         self.username = router_info['username']
         self.password = router_info['password']
         self.ipv4 = router_info['ipv4']
-        self.os = router_info['os']
+        self.os_name = router_info['os']
 
     def login(self):
         self.session = SSH2()
@@ -25,11 +25,11 @@ class Router:
             raise AttributeError('cannot find a living session.')
 
     def get_config(self):
-        if(self.os == 'IOS-XR' or self.os == 'IOS' or self.os == 'IOS-XE'):
+        if(self.os_name == 'IOS-XR' or self.os_name == 'IOS' or self.os_name == 'IOS-XE'):
             self.session.execute('terminal length 0')
             self.session.execute('show running-config')
             result = self.session.response
-        elif(self.os == 'JUNOS'):
+        elif(self.os_name == 'JUNOS'):
             self.session.execute('show configuration | no-more')
             result = self.session.response
         else:
