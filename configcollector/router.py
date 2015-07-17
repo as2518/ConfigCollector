@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-
+"""Definition Router."""
 from Exscript.protocols import SSH2
 from Exscript.Account import Account
 
 
 class Router:
+
+    """Router class."""
+
     def __init__(self, router_info):
+        """Initialize."""
         self.hostname = router_info['hostname']
         self.username = router_info['username']
         self.password = router_info['password']
@@ -14,11 +18,13 @@ class Router:
         self.session = None
 
     def login(self):
+        """login."""
         self.session = SSH2()
         self.session.connect(self.ipv4)
         self.session.login(Account(name=self.username, password=self.password))
 
     def logout(self):
+        """logout."""
         if self.session:
             self.session.send('exit\r')
             self.session.close()
@@ -26,6 +32,7 @@ class Router:
             raise AttributeError('cannot find a living session.')
 
     def get_config(self):
+        """get configuration."""
         if (
                 self.os_name == 'IOS-XR' or
                 self.os_name == 'IOS' or

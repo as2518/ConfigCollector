@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Collector of configuration."""
 import sys
 from argparse import ArgumentParser
 import json
@@ -6,6 +7,7 @@ from configcollector.router import Router
 
 
 def main():
+    """main function."""
     # Parse argment
     parser = ArgumentParser(
         description='Collect configuration files on mutiple routers')
