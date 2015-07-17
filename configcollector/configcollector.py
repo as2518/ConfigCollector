@@ -14,7 +14,7 @@ def main():
                         default='/etc/configcollector/inventory.json',
                         help='router information file\n\
                         (default=etc/configcollector/inventory.json)')
-    parser.add_argument('-o',  '--output',
+    parser.add_argument('-o', '--output',
                         type=str,
                         default='./',
                         help='output directory\n\
