@@ -8,6 +8,7 @@ setup(
     author='Taiji Tsuchiya',
     author_email='tuty0630@gmail.com',
     license='MIT',
+    url='https://github.com/taijiji/ConfigCollector',
     packages=[
         'configcollector',
     ],
