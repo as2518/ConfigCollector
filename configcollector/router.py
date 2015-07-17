@@ -11,6 +11,7 @@ class Router:
         self.password = router_info['password']
         self.ipv4 = router_info['ipv4']
         self.os_name = router_info['os']
+        self.session = None
 
     def login(self):
         self.session = SSH2()
