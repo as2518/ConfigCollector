@@ -1,0 +1,1 @@
+"""configcollector package."""
