@@ -2,7 +2,7 @@
 import sys
 from argparse import ArgumentParser
 import json
-from router import Router
+from configcollector.router import Router
 
 
 def main():
