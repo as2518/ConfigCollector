@@ -1,11 +1,13 @@
-#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Collector of configuration."""
 import sys
 from argparse import ArgumentParser
 import json
-from router import Router
+from configcollector.router import Router
 
 
 def main():
+    """main function."""
     # Parse argment
     parser = ArgumentParser(
         description='Collect configuration files on mutiple routers')
@@ -14,7 +16,7 @@ def main():
                         default='/etc/configcollector/inventory.json',
                         help='router information file\n\
                         (default=etc/configcollector/inventory.json)')
-    parser.add_argument('-o',  '--output',
+    parser.add_argument('-o', '--output',
                         type=str,
                         default='./',
                         help='output directory\n\
@@ -41,8 +43,10 @@ def main():
     # Login and get config for each routers
     for num in range(len(router_info)):
         router = Router(router_info[num])
-        print 'Accessing router: ' + router_info[num]['hostname'] + '...'
+        print('Accessing router: ' + router_info[num]['hostname'] + '...')
 
+        # pylint: disable=bare-except, fixme
+        # TODO: resolve No exception type(s) specified (bare-except)
         try:
             router.login()
             output = router.get_config()
@@ -58,7 +62,7 @@ def main():
         try:
             output_filename =\
                 args.output + router_info[num]['hostname'] + '.txt'
-            print 'Writing output file "' + output_filename + '"...'
+            print('Writing output file "' + output_filename + '"...')
         except AttributeError:
             sys.stderr.write('Cannot read : ' + output_filename + '\n')
             sys.exit(1)
@@ -67,12 +71,12 @@ def main():
         try:
             with open(output_filename, 'w') as file:
                 file.write(output)
-        except:
+        except IOError:
             sys.stderr.write('Cannot open "' + output_filename + '"\n')
             file.close()
             sys.exit(1)
 
-        print 'Success : "' + output_filename + '"!'
+        print('Success : "' + output_filename + '"!')
 
 if __name__ == '__main__':
     main()

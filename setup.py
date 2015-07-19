@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup
 
 setup(
@@ -7,6 +8,7 @@ setup(
     author='Taiji Tsuchiya',
     author_email='tuty0630@gmail.com',
     license='MIT',
+    url='https://github.com/taijiji/ConfigCollector',
     packages=[
         'configcollector',
     ],
