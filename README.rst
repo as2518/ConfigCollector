@@ -14,7 +14,7 @@ Install
 =====
 Install using pip.
 ::
-    pip install configcolletctor
+    pip install configcollector
 
 How to use
 ==============
