@@ -57,7 +57,10 @@ class Router:
             self.session.execute('show running-config')
             result = self.session.response
         elif self.os_name == 'JUNOS':
-            self.session.execute('show configuration | no-more')
+            if self.username == 'root':
+                self.session.execute('cli show configuration | no-more')
+            else:
+                self.session.execute('show configuration | no-more')
             result = self.session.response
         else:
             raise ValueError('OS is unknown value.\
