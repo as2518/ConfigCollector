@@ -3,7 +3,7 @@
 import sys
 from argparse import ArgumentParser
 import json
-from configcollector.router import Router
+from router import Router
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
                         type=str,
                         default='/etc/configcollector/inventory.json',
                         help='router information file\n\
-                        (default=etc/configcollector/inventory.json)')
+                        (default=/etc/configcollector/inventory.json)')
     parser.add_argument('-o', '--output',
                         type=str,
                         default='./',
@@ -60,8 +60,12 @@ def main():
 
         # Open output file written config
         try:
+            if args.output.endswith('/'):
+                delimiter = ''
+            else:
+                delimiter = '/'
             output_filename =\
-                args.output + router_info[num]['hostname'] + '.txt'
+                args.output + delimiter + router_info[num]['hostname'] + '.txt'
             print('Writing output file "' + output_filename + '"...')
         except AttributeError:
             sys.stderr.write('Cannot read : ' + output_filename + '\n')

@@ -1,23 +1,45 @@
 [
-    {
-        "hostname" : "sample_router1",
-        "username" : "sample_user1",
-        "password" : "sample_passwd1",
-        "ipv4"     : "192.168.0.1",
-        "os"       : "JUNOS"
-    },
-    {
-        "hostname" : "sample_router2",
-        "username" : "sample_user2",
-        "password" : "sample_passwd2",
-        "ipv4"     : "192.168.0.2",
-        "os"       : "IOS-XR"
-    },
-    {
-        "hostname" : "sample_router3",
-        "username" : "sample_user3",
-        "password" : "sample_passwd3",
-        "ipv4"     : "192.168.0.3",
-        "os"       : "IOS"
-    }
+  {
+      "hostname" : "IOS-Sample",
+      "username" : "USER",
+      "password" : "PASSWORD",
+      "ipv4"     : "192.168.0.1",
+      "os"       : "IOS"
+  },
+  {
+      "hostname" : "IOS-XE-Sample",
+      "username" : "USER",
+      "password" : "PASSWORD",
+      "ipv4"     : "192.168.0.2",
+      "os"       : "IOS-XE"
+  },
+  {
+      "hostname" : "IOS-XR-Sample",
+      "username" : "USER",
+      "password" : "PASSWORD",
+      "ipv4"     : "192.168.0.3",
+      "os"       : "IOS-XR"
+  },
+  {
+      "hostname" : "NX-OS-Sample",
+      "username" : "USER",
+      "password" : "PASSWORD",
+      "ipv4"     : "192.168.0.4",
+      "os"       : "NX-OS"
+  },
+  {
+      "hostname" : "ASA-Sample",
+      "username" : "USER",
+      "password" : "PASSWORD",
+      "enable"   : "ENABLE",
+      "ipv4"     : "192.168.0.5",
+      "os"       : "ASA"
+  },
+  {
+      "hostname" : "JUNOS-Sample",
+      "username" : "USER",
+      "password" : "PASSWORD",
+      "ipv4"     : "192.168.0.6",
+      "os"       : "JUNOS"
+  }
 ]
