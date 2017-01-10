@@ -5,7 +5,6 @@ from Exscript.Account import Account
 
 
 class Router:
-
     """Router class."""
 
     def __init__(self, router_info):
